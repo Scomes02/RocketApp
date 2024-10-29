@@ -4,7 +4,7 @@ require 'Conexion.php';
 // Lee el archivo JSON y decodifica los datos
 $jsonData = file_get_contents('precios.json');
 $precios = json_decode($jsonData, true);
-
+//COMENTARIO AGREGADO AQUI XD NASHEEEEEE
 function obtenerPrecio($id, $precios)
 {
     foreach ($precios as $precio) {
