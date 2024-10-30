@@ -18,7 +18,8 @@ session_start();
 <body>
     <header>
         <div class="logo">
-        <img src="fotos index/cover.jpg" class="imag">        </div>
+            <img src="fotos index/cover.jpg" class="imag">
+        </div>
         <audio controls>
             <source src="fotos index/Capibara.mp4" type="audio/mp4">
         </audio>
@@ -49,14 +50,14 @@ session_start();
 
     </header>
 
-   <aside>
+    <aside>
         <div class="contenedor1">
             <img src="fotos index/FOT1.jpg" class="fotoPrincipal">
             <img src="fotos index/FOT2.jpg" class="fotoPrincipal">
             <img src="fotos index/FOT3.jpg" class="fotoPrincipal">
             <img src="fotos index/FOT4.jpg" class="fotoPrincipal">
         </div>
-    </aside> 
+    </aside>
 
     <hr>
 
@@ -72,7 +73,7 @@ session_start();
                 <a href="#tarjeta-2">
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
-            </div> 
+            </div>
         </div>
         <div class="tarjeta" id="tarjeta-2">
             <div class="imgCarrusel">
@@ -101,13 +102,15 @@ session_start();
         </div>
     </div>
 
-    <footer><!--
+    <footer>
+
         <div class="contenedor">
             <ul>
                 <li><a href="https://www.instagram.com/capibara_store1/" target="_blank">&copy;CAPIBARA 2023</a></li>
             </ul>
             <div id="contact">
                 <form action="save_message.php" method="post">
+                    <input type="hidden" name="page" value="index"> <!-- Campo oculto para identificar la página -->
                     <label for="name">Nombre:</label>
                     <input type="text" id="name" name="name">
                     <label for="name">Contacto:</label>
@@ -118,24 +121,7 @@ session_start();
                 </form>
             </div>
         </div>
-    </footer>-->
-    <div class="contenedor">
-    <ul>
-        <li><a href="https://www.instagram.com/capibara_store1/" target="_blank">&copy;CAPIBARA 2023</a></li>
-    </ul>
-    <div id="contact">
-        <form action="save_message.php" method="post">
-            <input type="hidden" name="page" value="index"> <!-- Campo oculto para identificar la página -->
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name">
-            <label for="name">Contacto:</label>
-            <input type="text" id="contacto" name="contacto">
-            <label for="message">Mensaje:</label>
-            <textarea name="message" id="message" cols="30" rows="2"></textarea>
-            <input type="submit" class="enviarmensaje" value="Enviar mensaje">
-        </form>
-    
-
+    </footer>
     <!-- Ventana emergente para mostrar mensajes -->
     <div id="divMensajes" class="ventana-emergente">
         <div class="contenido-ventana">
