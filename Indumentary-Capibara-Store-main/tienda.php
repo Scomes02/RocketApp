@@ -21,7 +21,7 @@ function obtenerPrecio($id, $precios)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Proyecto nuevo.ico">
+    <link rel="icon" href="fotos index/Proyecto nuevo.ico">
     <title>CAPIBARA STORE - TIENDA</title>
     <link rel="stylesheet" href="styleGeneral.css">
     <link rel="stylesheet" href="style2.css">
@@ -30,7 +30,7 @@ function obtenerPrecio($id, $precios)
 <body>
     <header>
         <div class="logo">
-            <img src="cover.jpg" class="imag">
+            <img src="fotos index/cover.jpg" class="imag">
         </div>
         <nav>
             <ul>
@@ -341,7 +341,7 @@ function obtenerPrecio($id, $precios)
         </div>
     </div>
     <!-- //////////////////////////////////////////////////////-->
-    <footer>
+    <footer><!--
         <div class="contenedor">
             <ul>
                 <li><a href="https://www.instagram.com/capibara_store1/" target="_blank">&copy;CAPIBARA 2023</a></li>
@@ -358,6 +358,23 @@ function obtenerPrecio($id, $precios)
                 </form>
             </div>
         </div>
+                -->
+                <div class="contenedor">
+    <ul>
+        <li><a href="https://www.instagram.com/capibara_store1/" target="_blank">&copy;CAPIBARA 2023</a></li>
+    </ul>
+    <div id="contact">
+        <form action="save_message.php" method="post">
+            <input type="hidden" name="page" value="tienda"> <!-- Campo oculto para identificar la página -->
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name">
+            <label for="name">Contacto:</label>
+            <input type="text" id="contacto" name="contacto">
+            <label for="message">Mensaje:</label>
+            <textarea name="message" id="message" cols="30" rows="2"></textarea>
+            <input type="submit" class="enviarmensaje" value="Enviar mensaje">
+        </form>
+    
 
     </footer>
     <script src="tienda.js"></script>
