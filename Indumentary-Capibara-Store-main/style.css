@@ -38,11 +38,23 @@ nav {
 body {
     height: 100vh;
 }
-
+<!--             ICONO INSTAGRAM
 .contenedor {
     margin-top: 25px;
 }
-
+.contenedor ul{
+    display:flex;
+    align-items: center;
+}
+.contenedor ul li a i{
+    margin-right: 0;
+    font-size: 1.2em;
+}
+.contenedor ul li a{
+    display:flex;
+    align-items: center;
+    gap:0;
+}
 footer ul {
     list-style: none;
     padding: 0;

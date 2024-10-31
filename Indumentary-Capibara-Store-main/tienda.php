@@ -25,6 +25,7 @@ function obtenerPrecio($id, $precios)
     <title>CAPIBARA STORE - TIENDA</title>
     <link rel="stylesheet" href="styleGeneral.css">
     <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" >
 </head>
 
 <body>
@@ -343,8 +344,10 @@ function obtenerPrecio($id, $precios)
     <!-- //////////////////////////////////////////////////////-->
     <footer>
         <div class="contenedor">
-            <ul>
-                <li><a href="https://www.instagram.com/capibara_store1/" target="_blank">&copy;CAPIBARA 2023</a></li>
+        <ul>
+                <li>          <!-- Link de instagram y su icono-->                   
+                    <a href="https://www.instagram.com/capibara_store1/" target="_blank"><i class="fa-brands fa-instagram"></i>CAPIBARA 2024&copy;</a>
+                </li>
             </ul>
             <div id="contact">
                 <form action="save_message.php" method="post">

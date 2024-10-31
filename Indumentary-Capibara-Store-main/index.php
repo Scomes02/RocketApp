@@ -13,6 +13,7 @@ session_start();
     <link rel="stylesheet" href="styleGeneral.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/8fa0212ec6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" >
 </head>
 
 <body>
@@ -104,9 +105,11 @@ session_start();
 
     <footer>
 
-        <div class="contenedor">
+        <div class="contenedor"> 
             <ul>
-                <li><a href="https://www.instagram.com/capibara_store1/" target="_blank">&copy;CAPIBARA 2023</a></li>
+                <li>          <!-- Link de instagram y su icono-->                   
+                    <a href="https://www.instagram.com/capibara_store1/" target="_blank"><i class="fa-brands fa-instagram"></i>CAPIBARA 2024&copy;</a>
+                </li>
             </ul>
             <div id="contact">
                 <form action="save_message.php" method="post">
