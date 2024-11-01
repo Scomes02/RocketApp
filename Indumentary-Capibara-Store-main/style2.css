@@ -1,5 +1,5 @@
 /* Combinar selectores con estilos similares */
-.grid-imagen{
+.grid-imagen {
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
 }
@@ -16,19 +16,21 @@ header ul {
     place-content: space-between;
 }
 /* Asegurar coherencia en los valores de propiedades */
-.grid-imagen img{
+
+.grid-imagen img {
     width: 100%;
     height: 300%;
     object-fit: cover;
     border-top-left-radius: 50%;
-    transition: all .5s;
+    transition: all 0.5s;
 }
+
 .grid-imagen2 img {
     width: 100%;
     height: 500px;
     object-fit: cover;
     border-top-left-radius: 50%;
-    transition: all .5s;
+    transition: all 0.5s;
 }
 /* Utilizar herencia y cascada */
 .info_producto {
@@ -38,6 +40,7 @@ header ul {
     flex-direction: column;
     gap: 10px;
 }
+
 .info_producto button {
     border: none;
     background: none;
@@ -47,6 +50,7 @@ header ul {
     cursor: pointer;
 }
 /* Otros estilos que no se repiten */
+
 header {
     background: #0B173D;
     color: rgb(0, 0, 0);
@@ -55,12 +59,14 @@ header {
     align-items: center;
     justify-content: space-between;
 }
+
 a {
     text-decoration: none;
     display: flex;
     justify-content: space-between;
     color: rgb(157, 182, 204);
 }
+
 p {
     color: #0b173d00;
 }
@@ -129,39 +135,9 @@ body {
     color: #2b240e;
 }
 
-footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-footer ul li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-footer ul li:last-child {
-    margin-right: 0;
-}
-
-footer #contact {
-    text-align: center;
-    flex-grow: 1;
-}
-footer{
-    background-color: rgb(0, 0, 0);
-    color: bisque;
-    margin-bottom: 0;
-}
 header,
 main.asaid {
     padding: 1em;
-}
-
-#contact {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 h1,
@@ -299,26 +275,6 @@ h4 {
     margin-right: 10px;
 }
 
-.contenedor {
-    width: 100%; /* Asegura que el contenedor del footer ocupe el 100% del ancho */
-    max-width: 1200px; /* Opcional: puedes mantener un ancho máximo para el contenido interior */
-    margin: 0 auto; /* Centra el contenido interior */
-    padding: 1em; /* Asegura que haya espacio alrededor del contenido */
-}
-.contenedor ul{
-    display:flex;
-    align-items: center;
-}
-.contenedor ul li a i{
-    margin-right: 0;
-    font-size: 1.2em;
-}
-.contenedor ul li a{
-    display:flex;
-    align-items: center;
-    gap:0;
-}
-
 /* Estilos para el carrito de compras */
 .icon-cart {
     width: 40px;
@@ -452,6 +408,118 @@ h4 {
     background-color:#B78F0D;
     color: white;
 }
+
+/*FOOTER*/
+
+
+/* Estilos para el enlace de Instagram */
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.social-links li a {
+    text-decoration: none;
+    color: bisque;
+    display: flex;
+    align-items: center;
+    gap: 0.5em; /* Espacio entre el icono y el texto */
+}
+
+.social-links li a i {
+    font-size: 1.2em;
+    color: #B78F0D;
+}
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1em; /* Agrega un espacio entre los elementos del menú */
+}
+
+footer ul li {
+    display: inline-flex;
+    align-items: center;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: bisque;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+footer ul li a i {
+    font-size: 1.2em;
+    color: #B78F0D;
+}
+
+
+footer ul li:last-child {
+    margin-right: 0;
+}
+
+/* Aseguramos que el contacto esté alineado a la izquierda */
+footer #contact {
+    flex-grow: 1;
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+footer {
+    background-color: rgb(0, 0, 0);
+    color: bisque;
+    padding: 1em 0;
+    margin-bottom: 0;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    align-items: center;
+    gap: 2em; /* Añade espacio entre los elementos principales */
+}
+
+
+/* Aseguramos que el formulario de contacto esté alineado a la derecha */
+#contact {
+    flex-grow: 1; /* Esto asegura que el formulario se alinee correctamente */
+    display: flex;
+    justify-content: flex-end; /* Alinea el formulario hacia la derecha */
+    align-items: center;
+    text-align: left;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em; /* Espacio entre campos del formulario */
+}
+
+.contenedor ul{
+    display:flex;
+    align-items: center;
+}
+
+.contenedor ul li a i{
+    margin-right: 0;
+    font-size: 1.2em;
+}
+
+.contenedor ul li a{
+    display:flex;
+    align-items: center;
+    gap:0;
+}
+
 i{
     color:#B78F0D;
 }
