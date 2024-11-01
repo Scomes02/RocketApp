@@ -305,6 +305,19 @@ h4 {
     margin: 0 auto; /* Centra el contenido interior */
     padding: 1em; /* Asegura que haya espacio alrededor del contenido */
 }
+.contenedor ul{
+    display:flex;
+    align-items: center;
+}
+.contenedor ul li a i{
+    margin-right: 0;
+    font-size: 1.2em;
+}
+.contenedor ul li a{
+    display:flex;
+    align-items: center;
+    gap:0;
+}
 
 /* Estilos para el carrito de compras */
 .icon-cart {
@@ -438,4 +451,7 @@ h4 {
     padding: 15px 25px;
     background-color:#B78F0D;
     color: white;
+}
+i{
+    color:#B78F0D;
 }

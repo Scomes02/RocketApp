@@ -17,11 +17,12 @@ if (isset($_POST['Usuario']) && isset($_POST['Nombre_completo']) && isset($_POST
         $patron = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
 
         // Comprobar si la contraseña coincide con el patrón
-        if(preg_match($patron, $Clave)){
-            return true;
-        }else{
-            return false;
-        }
+        return preg_match($patron, $Clave);
+    }
+
+    function validarNombreCompleto($nombre) {
+        // Comprobar que el nombre completo no contenga números
+        return !preg_match('/\d/', $nombre);
     }
 
     $Usuario = validar($_POST['Usuario']);
@@ -29,13 +30,16 @@ if (isset($_POST['Usuario']) && isset($_POST['Nombre_completo']) && isset($_POST
     $Clave = validar($_POST['Clave']);
     $RClave = validar($_POST['RClave']);
 
-    $datosUsuarios = 'Usuario=' . $Usuario . '&Nombre_completo=' . $Nombre_completo;
+    $datosUsuarios = 'Usuario=' . urlencode($Usuario) . '&Nombre_completo=' . urlencode($Nombre_completo);
 
     if (empty($Usuario)) {
         header("Location: CrearCuenta.php?error=El usuario es requerido&$datosUsuarios");
         exit();
     } elseif (empty($Nombre_completo)) {
         header("Location: CrearCuenta.php?error=El nombre completo es requerido&$datosUsuarios");
+        exit();
+    } elseif (!validarNombreCompleto($Nombre_completo)) {
+        header("Location: CrearCuenta.php?error=El nombre completo no puede contener números&$datosUsuarios");
         exit();
     } elseif (empty($Clave)) {
         header("Location: CrearCuenta.php?error=La clave es requerida&$datosUsuarios");
@@ -72,10 +76,8 @@ if (isset($_POST['Usuario']) && isset($_POST['Nombre_completo']) && isset($_POST
             }
             $hashedPassword = password_hash($Clave, PASSWORD_DEFAULT); // Hash de la clave
             $stmt2->bind_param("sss", $Usuario, $Nombre_completo, $hashedPassword);
-            //alert('Usuario creado con éxito');    ESTA FRACCION VA ARRIBA DE SETIMEOUT, RETIRADA PARA NO MOSTRAR LA ALERTA
             if ($stmt2->execute()) {
                 echo "<script>
-                        
                         setTimeout(function() {
                             window.location.href = 'Index.php';
                         }, 1000);

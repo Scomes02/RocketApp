@@ -28,11 +28,11 @@
         <label for="usuario">
             <i class="fa-solid fa-user"></i> Usuario
         </label>
-        <input type="text" id="usuario" name="Usuario" placeholder="Ingrese Usuario">
+        <input type="text" name="Usuario" value="<?php echo isset($_GET['Usuario']) ? htmlspecialchars($_GET['Usuario']) : ''; ?>">
         <label for="nombre_completo">
             <i class="fa-solid fa-users"></i> Nombre Completo
         </label>
-        <input type="text" id="nombre_completo" name="Nombre_completo" placeholder="Ingrese Nombre Completo">
+        <input type="text" name="Nombre_completo" value="<?php echo isset($_GET['Nombre_completo']) ? htmlspecialchars($_GET['Nombre_completo']) : ''; ?>">
         <label for="clave">
             <i class="fa-solid fa-key"></i> Clave
         </label>
