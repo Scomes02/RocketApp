@@ -10,7 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conexion) { // Verificar que la conexión está definida
         echo "Conexión exitosa."; // Mensaje de depuración
-        $sql = "INSERT INTO correo (name, mensaje, contacto) VALUES (?, ?, ?)";
+
+        // Modificar la consulta SQL para incluir la fecha y hora
+        $sql = "INSERT INTO correo (name, mensaje, contacto, fecha_hora) VALUES (?, ?, ?, NOW())";
         $stmt = $conexion->prepare($sql);
         if ($stmt) {
             $stmt->bind_param("sss", $name, $message, $contacto);
@@ -37,4 +39,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Solicitud inválida.";
 }
 ?>
-<!--dae

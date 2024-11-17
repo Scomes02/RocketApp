@@ -25,7 +25,7 @@ function obtenerPrecio($id, $precios)
     <title>CAPIBARA STORE - TIENDA</title>
     <link rel="stylesheet" href="styleGeneral.css">
     <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -342,35 +342,39 @@ function obtenerPrecio($id, $precios)
         </div>
     </div>
     <!-- //////////////////////////////////////////////////////-->
-    <footer>
-    <div class="contenedor">
-        <!-- Enlace de Instagram, alineado a la izquierda -->
-        <ul class="social-links">
-            <li>
-                <a href="https://www.instagram.com/capibara_store1/" target="_blank">
-                    <i class="fa-brands fa-instagram"></i> CAPIBARA 2024&copy;
-                </a>
-            </li>
-        </ul>
-        
-        <!-- Formulario de contacto, alineado a la derecha -->
-        <div id="contact">
-            <form action="save_message.php" method="post">
-                <input type="hidden" name="page" value="tienda">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name">
-                
-                <label for="contacto">Contacto:</label>
-                <input type="text" id="contacto" name="contacto">
-                
-                <label for="message">Mensaje:</label>
-                <textarea name="message" id="message" cols="30" rows="2"></textarea>
-                
-                <input type="submit" class="enviarmensaje" value="Enviar mensaje">
-            </form>
-        </div>
+    <h7>¡Contáctanos!</h7>
+    <h7>
+        ¿Tienes alguna pregunta, comentario o sugerencia? 
+        <br>
+        Déjanos tu mensaje y nos pondremos en contacto contigo lo antes posible. 
+        <br>
+        ¡Estamos aquí para ayudarte!
+    </h7>
+    <div id="contact" class="contacto-form">
+        <form action="save_message.php" method="post">
+            <input type="hidden" name="page" value="index"> <!-- Campo oculto para identificar la página -->
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="contacto">Contacto:</label>
+            <input type="text" id="contacto" name="contacto" required>
+            <label for="message">Mensaje:</label>
+            <textarea name="message" id="message" cols="30" rows="2" required></textarea>
+            <input type="submit" class="enviarmensaje" value="Enviar mensaje">
+        </form>
     </div>
-</footer>
+
+    <footer>
+        <div class="contenedor">
+            <!-- Enlace de Instagram, alineado a la izquierda -->
+            <ul class="social-links">
+                <li>
+                    <a href="https://www.instagram.com/capibara_store1/" target="_blank">
+                        <i class="fa-brands fa-instagram"></i> CAPIBARA 2024&copy;
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
     <script src="tienda.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

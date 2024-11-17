@@ -16,7 +16,9 @@ $resultado = $conexion->query($sql);
 $htmlMensajes = '';
 if ($resultado->num_rows > 0) {
     while ($fila = $resultado->fetch_assoc()) {
-        $htmlMensajes .= '<p>De: ' . htmlspecialchars($fila['name']) .'<br>contactar: ' . htmlspecialchars($fila['contacto']) . '<br>Mensaje: ' . htmlspecialchars($fila['mensaje']) . '<br>-----------------------------------------------------------------------------------------------------------------------------------'.'</p>';
+        // Formatear la fecha y hora
+        $fechaHora = date('d-m-Y H:i:s', strtotime($fila['fecha_hora'])); // Cambia el formato según tus necesidades
+        $htmlMensajes .= '<p>De: ' . htmlspecialchars($fila['name']) . '<br>Contactar: ' . htmlspecialchars($fila['contacto']) . '<br>Mensaje: ' . htmlspecialchars($fila['mensaje']) . '<br>Fecha y Hora: ' . $fechaHora . '<br>-----------------------------------------------------------------------------------------------------------------------------------</p>';
     }
 } else {
     $htmlMensajes = '<p>No hay mensajes.</p>';
