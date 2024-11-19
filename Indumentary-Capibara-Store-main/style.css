@@ -16,8 +16,14 @@ header {
     padding: 0 20px;
 }
 
+header .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+}
+
 audio {
-    margin-left: 20px;
+    margin-right: auto;
     height: 30px;
     width: 330px;
 }
@@ -113,7 +119,12 @@ footer ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex; /* Organiza los elementos en fila */
+    gap: 20px; /* Espacio entre elementos */
+    justify-content: center; /* Centra el contenido dentro del footer */
+    align-items: center; /* Alinea verticalmente */
 }
+
 
 footer a {
     color: bisque;
@@ -123,6 +134,16 @@ footer a {
 
 footer a:hover {
     color: white;
+}
+
+footer li {
+    display: flex; /* Asegura que el contenido dentro del <li> esté alineado */
+    align-items: center;
+}
+
+footer a img {
+    width: 20px; /* Ajusta el tamaño del icono TikTok si es necesario */
+    margin-right: 5px; /* Espacio entre el icono y el texto */
 }
 
 #conteCarrusel {
@@ -159,13 +180,13 @@ img {
 }
 
 i {
-    color: #B78F0D;
+    color: #fcfcfc;
     cursor: pointer;
 }
 
 .imag {
     margin-top: 3px;
-    height: 90px;
+    height: 80px;
     width: 225px;
 }
 
@@ -196,7 +217,7 @@ i {
 }
 
 .fotoPrincipal {
-    height: 425px;
+    height: 423px;
     width: 250px;
     display: inline-block;
     animation: pulse 5s infinite;
@@ -213,6 +234,23 @@ i {
     85% {
         transform: scale(1);
     }
+}
+
+/* Retrasos en la animación */
+.fotoPrincipal:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.fotoPrincipal:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.fotoPrincipal:nth-child(3) {
+    animation-delay: 2s;
+}
+
+.fotoPrincipal:nth-child(4) {
+    animation-delay: 3s;
 }
 
 .ventana-emergente {

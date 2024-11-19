@@ -21,33 +21,40 @@ if (!isset($_SESSION['Usuario'])) {
 </head>
 
 <body>
-    <h1>Metodos de Pago</h1>
+    <h1>Métodos de Pago</h1>
     <hr>
-    <h7><img src="ImgMPagos/atencion.ico" alt="atencion" class="metodo_pago">Momentaneamente el metodo de pago sera en el local<img src="ImgMPagos/atencion.ico" alt="atencion" class="metodo_pago"></h7>
+    <h7>
+        <img src="ImgMPagos/atencion.ico" alt="atencion" class="metodo_pago">
+        Momentáneamente el método de pago será en el local
+        <img src="ImgMPagos/atencion.ico" alt="atencion" class="metodo_pago">
+    </h7>
     <hr>
     <div class="metodos-pago">
         <div class="metodo-pago">
             <img src="ImgMPagos/debitCard.png" alt="Tarjeta de Débito">
-            <input type="radio" id="debito" name="metodo_pago" value="debito">
+            <input type="radio" id="debito" name="metodo_pago" value="Tarjeta de Débito">
             <label for="debito">Tarjeta de Débito</label>
         </div>
         <div class="metodo-pago">
             <img src="ImgMPagos/creditCard.png" alt="Tarjeta de Crédito">
-            <input type="radio" id="credito" name="metodo_pago" value="credito">
+            <input type="radio" id="credito" name="metodo_pago" value="Tarjeta de Crédito">
             <label for="credito">Tarjeta de Crédito</label>
         </div>
         <div class="metodo-pago">
-        <img src="ImgMPagos/mercadoPago.png" alt="Mercado Pago">    
-        <input type="radio" id="mercadopago" name="metodo_pago" value="mercadopago">
-            <label for="mercadopago" >Mercado Pago</label>
+            <img src="ImgMPagos/mercadoPago.png" alt="Mercado Pago">
+            <input type="radio" id="mercadopago" name="metodo_pago" value="Mercado Pago">
+            <label for="mercadopago">Mercado Pago</label>
         </div>
         <div class="metodo-pago">
             <img src="ImgMPagos/plata.png" alt="Efectivo">
-            <input type="radio" id="efectivo" name="metodo_pago" value="efectivo">
-            <label for="efectivo" >Efectivo</label>
+            <input type="radio" id="efectivo" name="metodo_pago" value="Efectivo">
+            <label for="efectivo">Efectivo</label>
         </div>
     </div>
     <hr>
+    <!-- Botón para descargar el recibo -->
+    <button id="btnDescargar" disabled>Descargar Recibo</button>
+    <br>
     <button id="btnPagar">Pagar</button>
 
     <div class="mensaje-emergente" id="mensajePago">
@@ -56,11 +63,31 @@ if (!isset($_SESSION['Usuario'])) {
             Gracias por su compra, el pago se realizará en el local.
         </div>
     </div>
+
     <script>
+        const radios = document.querySelectorAll('input[name="metodo_pago"]');
+        const btnDescargar = document.getElementById('btnDescargar');
         const btnPagar = document.getElementById('btnPagar');
-
         const mensajePago = document.getElementById('mensajePago');
+        let metodoSeleccionado = '';
 
+        // Habilitar el botón de descarga solo si hay un método seleccionado
+        radios.forEach(radio => {
+            radio.addEventListener('change', (event) => {
+                metodoSeleccionado = event.target.value;
+                btnDescargar.disabled = false;
+            });
+        });
+
+        // Descargar el recibo
+        btnDescargar.addEventListener('click', () => {
+            if (metodoSeleccionado) {
+                const url = `generar_recibo.php?metodo=${encodeURIComponent(metodoSeleccionado)}`;
+                window.location.href = url;
+            }
+        });
+
+        // Mostrar mensaje de pago
         btnPagar.addEventListener('click', () => {
             mensajePago.style.display = 'block';
 
@@ -69,7 +96,6 @@ if (!isset($_SESSION['Usuario'])) {
             }, 5000);
         });
     </script>
-    
 </body>
 
 </html>

@@ -117,6 +117,11 @@ session_start();
                         <i class="fa-brands fa-instagram"></i>CAPIBARA 2024&copy;
                     </a>
                 </li>
+                <li>
+                    <a href="">
+                        <img src="fotos index/tiktok.png"><i>TikTok</i>
+                    </a>
+                </li>
             </ul>
         </div>
     </footer>

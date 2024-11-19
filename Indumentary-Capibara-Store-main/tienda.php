@@ -364,17 +364,21 @@ function obtenerPrecio($id, $precios)
     </div>
 
     <footer>
-        <div class="contenedor">
-            <!-- Enlace de Instagram, alineado a la izquierda -->
-            <ul class="social-links">
-                <li>
-                    <a href="https://www.instagram.com/capibara_store1/" target="_blank">
-                        <i class="fa-brands fa-instagram"></i> CAPIBARA 2024&copy;
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </footer>
+    <div class="contenedor">
+        <ul>
+            <li>
+                <a href="https://www.instagram.com/capibara_store1/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i> CAPIBARA 2024&copy;
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="fotos index/tiktok.png" alt="TikTok"> TikTok
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
     <script src="tienda.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

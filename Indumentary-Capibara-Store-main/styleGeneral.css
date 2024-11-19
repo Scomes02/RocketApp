@@ -4,6 +4,9 @@
     box-sizing:border-box ;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+body {
+    overflow-x: hidden;
+}
 #footer{
     position: fixed;
     left:0px;
