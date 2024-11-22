@@ -90,9 +90,9 @@ session_start();
 
     <h7>¡Contáctanos!</h7>
     <h7>
-        ¿Tienes alguna pregunta, comentario o sugerencia? 
+        ¿Tienes alguna pregunta, comentario o sugerencia?
         <br>
-        Déjanos tu mensaje y nos pondremos en contacto contigo lo antes posible. 
+        Déjanos tu mensaje y nos pondremos en contacto contigo lo antes posible.
         <br>
         ¡Estamos aquí para ayudarte!
     </h7>
@@ -108,7 +108,13 @@ session_start();
             <input type="submit" class="enviarmensaje" value="Enviar mensaje">
         </form>
     </div>
-
+    <div class="seguir-redes">
+        <img src="fotos index/patita.png" alt="Patita" class="icono-patita">
+        <p>
+            <strong>¡No te pierdas nada!</strong> <br>
+            <span>Sigue a <b>Capibara Store</b> en todas nuestras redes sociales para enterarte de las últimas novedades, promociones y más.</span>
+        </p>
+    </div>
     <footer>
         <div class="contenedor">
             <ul>
@@ -120,6 +126,11 @@ session_start();
                 <li>
                     <a href="">
                         <img src="fotos index/tiktok.png"><i>TikTok</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="fotos index/Whatsapp.png" alt="Whatsapp"> Whatsapp
                     </a>
                 </li>
             </ul>

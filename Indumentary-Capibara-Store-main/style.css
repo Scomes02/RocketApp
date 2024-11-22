@@ -303,3 +303,35 @@ i {
     background-color: #B78F0D;
     color: white;
 }
+
+.seguir-redes {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #bc9822d0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.seguir-redes img.icono-patita {
+    width: 50px;
+    height: auto;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.seguir-redes p {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.seguir-redes p strong {
+    font-size: 25px;
+    color: #0B173D;
+}
+
+.seguir-redes p span b {
+    color: #2c3e50;
+}

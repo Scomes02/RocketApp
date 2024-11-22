@@ -29,10 +29,10 @@
             <i class="fa-solid fa-user"></i> Usuario
         </label>
         <input type="text" name="Usuario" value="<?php echo isset($_GET['Usuario']) ? htmlspecialchars($_GET['Usuario']) : ''; ?>">
-        <label for="nombre_completo">
-            <i class="fa-solid fa-users"></i> Nombre Completo
+        <label for="mail">
+            <i class="fa-solid fa-users"></i> Mail
         </label>
-        <input type="text" name="Nombre_completo" value="<?php echo isset($_GET['Nombre_completo']) ? htmlspecialchars($_GET['Nombre_completo']) : ''; ?>">
+        <input type="text" name="mail" value="<?php echo isset($_GET['mail']) ? htmlspecialchars($_GET['mail']) : ''; ?>">
         <label for="clave">
             <i class="fa-solid fa-key"></i> Clave
         </label>
@@ -43,6 +43,7 @@
         <input type="password" id="rclave" name="RClave" placeholder="Repetir Clave">
         <hr>
         <input type="submit" class="button styled-button" value="Registrarse">
+        <button type="button" class="button styled-button" onclick="window.location.href='iniciocapibara.php'">Volver</button>
     </form>
     <?php if(isset($_SESSION['error'])) { ?>
         <p class="error"><?php echo $_SESSION['error']; ?></p>

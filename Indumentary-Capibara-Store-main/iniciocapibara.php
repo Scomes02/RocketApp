@@ -42,6 +42,8 @@
         <hr>
         <button type="submit">Iniciar sesion</button>
         <a href="CrearCuenta.php">Crear Cuenta</a>
-
+        <br>
+        <hr>
+        <a href="CambioContra.php">¿Olvidaste la contraseña?</a>
     </form>
 </body>

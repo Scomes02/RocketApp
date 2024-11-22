@@ -18,6 +18,10 @@ header ul {
 /* Asegurar coherencia en los valores de propiedades */
 
 .grid-imagen img {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
     width: 100%;
     height: 300%;
     object-fit: cover;
@@ -26,6 +30,10 @@ header ul {
 }
 
 .grid-imagen2 img {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
     width: 100%;
     height: 500px;
     object-fit: cover;
@@ -49,8 +57,8 @@ header ul {
     padding: 15px 10px;
     cursor: pointer;
 }
-/* Otros estilos que no se repiten */
 
+/*Header*/
 header {
     background: #0B173D;
     color: rgb(0, 0, 0);
@@ -70,6 +78,7 @@ a {
 p {
     color: #0b173d00;
 }
+
 nav {
     width: 1000px;
     background-color: #0B173D;
@@ -79,7 +88,75 @@ nav {
     height: 80px;
     padding: 5px 9%;
 }
+/* Barra de busqueda y filtros */
+/* Contenedor general */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+/* Input de búsqueda */
+#search-bar {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Cambiar estilo cuando el input tiene enfoque */
+#search-bar:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    border-color: #2b240e;
+}
+
+/* Selector de categoría */
+#category-filter {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Cambiar estilo cuando el selector tiene enfoque */
+#category-filter:focus {
+    border-color: #B78F0D;
+}
+
+/* Botón de búsqueda */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #B78F0D;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efecto hover y clic en el botón */
+button:hover {
+    background-color: #8f7317;
+}
+
+button:active {
+    transform: scale(0.95);
+}
 body {
     height: 100vh;
 }
@@ -140,12 +217,20 @@ main.asaid {
     padding: 1em;
 }
 
-h1,
-h2 {
+h1, h2 {
     font-size: large;
+    text-align: center;  /* Centrado de texto sin flexbox */
+    margin: 0; /* Para evitar márgenes innecesarios */
+}
+
+.container-header {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Añade un espacio entre los encabezados y el contenido */
 }
+
+
 
 h3 {
     font-size: large;
@@ -535,4 +620,36 @@ footer img {
 
 i{
     color:#B78F0D;
+}
+
+.seguir-redes {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #bc9822d0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.seguir-redes img.icono-patita {
+    width: 50px;
+    height: auto;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.seguir-redes p {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.seguir-redes p strong {
+    font-size: 25px;
+    color: #0B173D;
+}
+
+.seguir-redes p span b {
+    color: #2c3e50;
 }

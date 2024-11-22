@@ -33,7 +33,7 @@ function obtenerPrecio($id, $precios)
         <div class="logo">
             <img src="fotos index/cover.jpg" class="imag">
         </div>
-        <nav>
+        <nav class="botones">
             <ul>
                 <li><a href="index.php" class="btn-grow">Inicio</a></li>
 
@@ -80,14 +80,26 @@ function obtenerPrecio($id, $precios)
                             <span class="total-pagar"></span>
                         </div>
                     </div>
+                    <button id="btnPagar">Pagar</button>
                 </div>
             </div>
         </nav>
     </header>
-    <h1>REMERAS</h1>
+
+    <input type="text" id="search-bar" placeholder="Buscar productos...">
+    <select id="category-filter">
+        <option value="all">Todas las categorías</option>
+        <option value="Remeras">Remeras</option>
+        <option value="Pantalones">Pantalones</option>
+    </select>
+    <button id="search-button">Buscar</button>
+
+    <div class="container-header">
+        <h1>REMERAS</h1>
+    </div>
     <hr>
     <div class="container_items">
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera1.jpg" alt="producto" />
             </figure>
@@ -100,7 +112,7 @@ function obtenerPrecio($id, $precios)
                 <button class="btn-add-cart" data-img="fotos tienda/remera1.jpg">Agregar al carrito</button>
             </div>
         </div>
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera2.jpg" alt="producto" />
             </figure>
@@ -114,7 +126,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera3.jpg" alt="producto" />
             </figure>
@@ -128,7 +140,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera4.jpg" alt="producto" />
             </figure>
@@ -142,7 +154,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera5.jpg" alt="producto" />
             </figure>
@@ -156,7 +168,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera6.jpg" alt="producto" />
             </figure>
@@ -170,7 +182,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera7.jpg" alt="producto" />
             </figure>
@@ -184,7 +196,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera8.jpg" alt="producto" />
             </figure>
@@ -198,7 +210,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen">
+        <div class="grid-imagen" data-category="Remeras">
             <figure>
                 <img src="fotos tienda/remera9.jpg" alt="producto" />
             </figure>
@@ -215,11 +227,13 @@ function obtenerPrecio($id, $precios)
     </div>
     <!-- //////////////////////////////////////////////////////-->
     <hr>
-    <h2>PANTALONES</h2>
+    <div class="container-header">
+        <h2>PANTALONES</h2>
+    </div>
     <hr>
     <!-- ///////////////////////////////////////////////////// -->
     <div class="container_items2">
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon1.jpg" alt="producto" />
             </figure>
@@ -232,7 +246,7 @@ function obtenerPrecio($id, $precios)
                 <button class="btn-add-cart" data-img="fotos tienda/pantalon1.jpg">Agregar al carrito</button>
             </div>
         </div>
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon2.jpg" alt="producto" />
             </figure>
@@ -245,7 +259,7 @@ function obtenerPrecio($id, $precios)
                 <button class="btn-add-cart" data-img="fotos tienda/pantalon2.jpg">Agregar al carrito</button>
             </div>
         </div>
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon3.jpg" alt="producto" />
             </figure>
@@ -258,7 +272,7 @@ function obtenerPrecio($id, $precios)
                 <button class="btn-add-cart" data-img="fotos tienda/pantalon3.jpg">Agregar al carrito</button>
             </div>
         </div>
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon4.jpg" alt="producto" />
             </figure>
@@ -272,7 +286,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon5.jpg" alt="producto" />
             </figure>
@@ -286,7 +300,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon6.jpg" alt="producto" />
             </figure>
@@ -300,7 +314,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon7.jpg" alt="producto" />
             </figure>
@@ -314,7 +328,7 @@ function obtenerPrecio($id, $precios)
             </div>
 
         </div>
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon8.jpg" alt="producto" />
             </figure>
@@ -327,7 +341,7 @@ function obtenerPrecio($id, $precios)
                 <button class="btn-add-cart" data-img="fotos tienda/pantalon8.jpg">Agregar al carrito</button>
             </div>
         </div>
-        <div class="grid-imagen2">
+        <div class="grid-imagen2" data-category="Pantalones">
             <figure>
                 <img src="fotos tienda/pantalon9.jpg" alt="producto" />
             </figure>
@@ -344,9 +358,9 @@ function obtenerPrecio($id, $precios)
     <!-- //////////////////////////////////////////////////////-->
     <h7>¡Contáctanos!</h7>
     <h7>
-        ¿Tienes alguna pregunta, comentario o sugerencia? 
+        ¿Tienes alguna pregunta, comentario o sugerencia?
         <br>
-        Déjanos tu mensaje y nos pondremos en contacto contigo lo antes posible. 
+        Déjanos tu mensaje y nos pondremos en contacto contigo lo antes posible.
         <br>
         ¡Estamos aquí para ayudarte!
     </h7>
@@ -362,23 +376,34 @@ function obtenerPrecio($id, $precios)
             <input type="submit" class="enviarmensaje" value="Enviar mensaje">
         </form>
     </div>
-
-    <footer>
-    <div class="contenedor">
-        <ul>
-            <li>
-                <a href="https://www.instagram.com/capibara_store1/" target="_blank">
-                    <i class="fa-brands fa-instagram"></i> CAPIBARA 2024&copy;
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="fotos index/tiktok.png" alt="TikTok"> TikTok
-                </a>
-            </li>
-        </ul>
+    <div class="seguir-redes">
+        <img src="fotos index/patita.png" alt="Patita" class="icono-patita">
+        <p>
+            <strong>¡No te pierdas nada!</strong> <br>
+            <span>Sigue a <b>Capibara Store</b> en todas nuestras redes sociales para enterarte de las últimas novedades, promociones y más.</span>
+        </p>
     </div>
-</footer>
+    <footer>
+        <div class="contenedor">
+            <ul>
+                <li>
+                    <a href="https://www.instagram.com/capibara_store1/" target="_blank">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="fotos index/tiktok.png" alt="TikTok"> TikTok
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="fotos index/Whatsapp.png" alt="Whatsapp"> Whatsapp
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
     <script src="tienda.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -398,6 +423,32 @@ function obtenerPrecio($id, $precios)
             });
         });
     </script>
+    <script>
+        const btnPagar = document.getElementById('btnPagar');
+
+        btnPagar.addEventListener('click', () => {
+            // Envía el carrito de compras a la sesión antes de redirigir
+            fetch('guardar_carrito.php', {
+                    method: 'POST',
+                    body: JSON.stringify(allProductos), // Enviamos el carrito como JSON
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Redirige a la página de pago
+                        window.location.href = 'pago.php';
+                    } else {
+                        console.error('Error al guardar el carrito.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+
 </body>
 
 </html>

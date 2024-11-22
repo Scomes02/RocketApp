@@ -9,6 +9,80 @@ btnCart.addEventListener('click', () => {
     containerCartProducts.classList.toggle('hidden-cart');
 });
 
+// Función de búsqueda y filtrado de productos
+document.getElementById('search-button').addEventListener('click', searchProducts);
+
+function searchProducts() {
+    // Obtener valores de búsqueda y categoría
+    const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+    const selectedCategory = document.getElementById("category-filter").value;
+
+    console.log('Término de búsqueda:', searchTerm); // Verifica el término de búsqueda
+    console.log('Categoría seleccionada:', selectedCategory); // Verifica la categoría seleccionada
+
+    // Seleccionar todos los productos (ambas clases)
+    const products = document.querySelectorAll(".grid-imagen, .grid-imagen2");
+
+    let hasVisibleRemeras = false;
+    let hasVisiblePantalones = false;
+
+    // Recorrer los productos y aplicar filtros
+    products.forEach(product => {
+        // Obtener el nombre del producto desde el div info_producto
+        const productNameElement = product.querySelector(".info_producto h2");
+
+        if (!productNameElement) {
+            console.error('No se encontró el elemento h2 en info_producto para el producto:', product);
+            return; // Salir si no se encuentra el elemento
+        }
+
+        const productName = productNameElement.textContent.toLowerCase(); // Obtener el nombre del producto
+        const productCategory = product.dataset.category; // Obtener la categoría del producto
+
+        // Mostrar u ocultar productos según los criterios
+        const matchesSearch = productName.includes(searchTerm) || searchTerm === ""; // Coincide con el nombre del producto
+        const matchesCategory = (selectedCategory === "all") || (productCategory === selectedCategory); // Coincide con la categoría seleccionada
+
+        // Mostrar sólo si ambos criterios coinciden
+        if (matchesSearch && matchesCategory) {
+            product.style.display = "block"; // Mostrar producto
+            console.log('Mostrando producto:', productName); // Verifica qué producto se muestra
+
+            // Determinar si pertenece a una categoría visible
+            if (productCategory === "Remeras") hasVisibleRemeras = true;
+            if (productCategory === "Pantalones") hasVisiblePantalones = true;
+        } else {
+            product.style.display = "none"; // Ocultar producto
+            console.log('Ocultando producto:', productName); // Verifica qué producto se oculta
+        }
+    });
+
+// Se añaden los contenedores de los encabezados
+const remerasHeader = document.querySelector(".container-header h1");
+const pantalonesHeader = document.querySelector(".container-header h2");
+
+// Mostrar u ocultar los encabezados según corresponda
+if (remerasHeader) {
+    if (hasVisibleRemeras) {
+        remerasHeader.parentNode.style.display = "block"; // Mostrar contenedor
+    } else {
+        remerasHeader.parentNode.style.display = "none"; // Ocultar contenedor
+    }
+}
+
+if (pantalonesHeader) {
+    if (hasVisiblePantalones) {
+        pantalonesHeader.parentNode.style.display = "block"; // Mostrar contenedor
+    } else {
+        pantalonesHeader.parentNode.style.display = "none"; // Ocultar contenedor
+    }
+}
+
+    
+}
+
+
+// Agregar productos al carrito
 productList.forEach(product => {
     product.addEventListener('click', e => {
         if (e.target.classList.contains('btn-add-cart')) {
@@ -94,19 +168,43 @@ function showProducts() {
         totalDiv.classList.add('cart-total');
         totalDiv.innerHTML = `
             <h3>Total a pagar</h3>
-                    <span class="total-pagar">$${total.toFixed(2)}</span><a href="pago.php">pagar</a>`;
-            containerCartProducts.appendChild(totalDiv);
-        }
-    
-        // Actualizamos el contador de productos
-        let totalCount = 0;
-        allProductos.forEach(product => {
-            totalCount += product.quantity;
+            <span class="total-pagar">$${total.toFixed(2)}</span>
+            <button id="btnPagar">Pagar</button>`; // Botón de pagar
+        containerCartProducts.appendChild(totalDiv);
+
+        // Agregar evento al botón de pagar
+        document.getElementById('btnPagar').addEventListener('click', () => {
+            // Envía el carrito de compras a la sesión antes de redirigir
+            fetch('guardar_carrito.php', {
+                method: 'POST',
+                body: JSON.stringify(allProductos), // Enviamos el carrito como JSON
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirige a la página de pago
+                    window.location.href = 'pago.php';
+                } else {
+                    console.error('Error al guardar el carrito.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         });
-        countProduct.textContent = totalCount;
-    
     }
 
+    // Actualizamos el contador de productos
+    let totalCount = 0;
+    allProductos.forEach(product => {
+        totalCount += product.quantity;
+    });
+    countProduct.textContent = totalCount;
+}
+
+// Función para actualizar el precio
 function actualizarPrecio(articuloId, nuevoPrecio) {
     fetch('edicion_precio.php', {
         method: 'POST',

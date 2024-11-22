@@ -1,96 +1,83 @@
 <?php
-
 session_start();
 
 include_once('Conexion.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-if (isset($_POST['Usuario']) && isset($_POST['Nombre_completo']) && isset($_POST['Clave']) && isset($_POST['RClave'])) {
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     function validar($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
+        return htmlspecialchars(trim($data));
     }
 
     function validarContrasena($Clave) {
-        // Expresión regular para validar la contraseña
-        $patron = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
-
-        // Comprobar si la contraseña coincide con el patrón
-        return preg_match($patron, $Clave);
+        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $Clave);
     }
 
-    function validarNombreCompleto($nombre) {
-        // Comprobar que el nombre completo no contenga números
-        return !preg_match('/\d/', $nombre);
+    function validarCorreo($correo) {
+        return filter_var($correo, FILTER_VALIDATE_EMAIL);
     }
 
-    $Usuario = validar($_POST['Usuario']);
-    $Nombre_completo = validar($_POST['Nombre_completo']);
-    $Clave = validar($_POST['Clave']);
-    $RClave = validar($_POST['RClave']);
+    $Usuario = validar($_POST['Usuario'] ?? '');
+    $mail = validar($_POST['mail'] ?? '');
+    $Clave = validar($_POST['Clave'] ?? '');
+    $RClave = validar($_POST['RClave'] ?? '');
 
-    $datosUsuarios = 'Usuario=' . urlencode($Usuario) . '&Nombre_completo=' . urlencode($Nombre_completo);
+    $datosUsuarios = "Usuario=" . urlencode($Usuario) . "&mail=" . urlencode($mail);
 
-    if (empty($Usuario)) {
-        header("Location: CrearCuenta.php?error=El usuario es requerido&$datosUsuarios");
+    // Validaciones
+    if (!$Usuario || !$mail || !$Clave || !$RClave || $Clave !== $RClave || !validarContrasena($Clave) || !validarCorreo($mail)) {
+        $error = "Error en los datos proporcionados.";
+        header("Location: CrearCuenta.php?error=$error&$datosUsuarios");
         exit();
-    } elseif (empty($Nombre_completo)) {
-        header("Location: CrearCuenta.php?error=El nombre completo es requerido&$datosUsuarios");
+    }
+
+    // Comprobar usuario existente
+    $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE nombre = ?");
+    $stmt->bind_param("s", $Usuario);
+    $stmt->execute();
+
+    if ($stmt->get_result()->num_rows > 0) {
+        header("Location: CrearCuenta.php?error=El usuario ya existe&$datosUsuarios");
         exit();
-    } elseif (!validarNombreCompleto($Nombre_completo)) {
-        header("Location: CrearCuenta.php?error=El nombre completo no puede contener números&$datosUsuarios");
-        exit();
-    } elseif (empty($Clave)) {
-        header("Location: CrearCuenta.php?error=La clave es requerida&$datosUsuarios");
-        exit();
-    } elseif (empty($RClave)) {
-        header("Location: CrearCuenta.php?error=La clave repetida es requerida&$datosUsuarios");
-        exit();
-    } elseif ($Clave !== $RClave) {
-        header("Location: CrearCuenta.php?error=Las claves no coinciden&$datosUsuarios");
-        exit();
-    } elseif (!validarContrasena($Clave)) {
-        header("Location: CrearCuenta.php?error=La clave debe contener al menos una letra minúscula, una letra mayúscula, un número, un símbolo y tener al menos 8 caracteres&$datosUsuarios");
-        exit();
+    }
+
+    // Insertar nuevo usuario
+    $stmt = $conexion->prepare("INSERT INTO usuarios (nombre, mail, Clave) VALUES (?, ?, ?)");
+    $hashedPassword = password_hash($Clave, PASSWORD_DEFAULT);
+    $stmt->bind_param("sss", $Usuario, $mail, $hashedPassword);
+
+    if ($stmt->execute()) {
+        try {
+            $mailer = new PHPMailer(true);
+            $mailer->isSMTP();
+            $mailer->Host = 'smtp.gmail.com';
+            $mailer->SMTPAuth = true;
+            $mailer->Username = 'copiawsp02@gmail.com';
+            $mailer->Password = 'rwqp bbhi yjvl jkhq';
+            $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mailer->Port = 587;
+
+            $mailer->setFrom('copiawsp02@gmail.com', 'Capibara Store');
+            $mailer->addAddress($mail, $Usuario);
+
+            $mailer->isHTML(true);
+            $mailer->Subject = 'Registro en Capibara Store';
+            $mailer->Body = "Hola $Usuario,<br><br>Has sido registrado en Capibara Store.<br><br>Saludos,<br>El equipo de Capibara Store";
+
+            $mailer->send();
+            header("Location: iniciocapibara.php?success=Registro exitoso");
+        } catch (Exception $e) {
+            echo "Error al enviar el correo: {$mailer->ErrorInfo}";
+        }
     } else {
-        // Verificar si el usuario ya existe
-        $sql = "SELECT * FROM usuarios WHERE nombre = ?";
-        $stmt = $conexion->prepare($sql);
-        if ($stmt === false) {
-            die('Error en la consulta SQL: ' . $conexion->error);
-        }
-        $stmt->bind_param("s", $Usuario);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            header("Location: CrearCuenta.php?error=El usuario ya existe&$datosUsuarios");
-            exit();
-        } else {
-            // Insertar el nuevo usuario en la base de datos
-            $sql2 = "INSERT INTO usuarios (nombre, Nombre_completo, Clave) VALUES (?, ?, ?)";
-            $stmt2 = $conexion->prepare($sql2);
-            if ($stmt2 === false) {
-                die('Error en la consulta SQL: ' . $conexion->error);
-            }
-            $hashedPassword = password_hash($Clave, PASSWORD_DEFAULT); // Hash de la clave
-            $stmt2->bind_param("sss", $Usuario, $Nombre_completo, $hashedPassword);
-            if ($stmt2->execute()) {
-                echo "<script>
-                        setTimeout(function() {
-                            window.location.href = 'Index.php';
-                        }, 1000);
-                      </script>";
-                exit();
-            } else {
-                header("Location: CrearCuenta.php?error=Ocurrió un error al crear el usuario");
-                exit();
-            }
-        }
+        echo "Error en la inserción de datos.";
     }
 } else {
     header("Location: CrearCuenta.php");
-    exit();
 }
 ?>
