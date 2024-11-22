@@ -392,12 +392,12 @@ function obtenerPrecio($id, $precios)
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="https://www.tiktok.com/foryou?lang=es" target="_blank">
                         <img src="fotos index/tiktok.png" alt="TikTok"> TikTok
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="https://web.whatsapp.com" target="_blank">
                         <img src="fotos index/Whatsapp.png" alt="Whatsapp"> Whatsapp
                     </a>
                 </li>
