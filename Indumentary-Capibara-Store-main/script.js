@@ -16,8 +16,8 @@ function obtenerMensajes() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var contenidoMensajes = document.getElementById('contenidoMensajes');
-            contenidoMensajes.innerHTML = this.responseText; // Inserta directamente el HTML
-            mostrarVentanaEmergente(); // Muestra la ventana emergente después de cargar los mensajes
+            contenidoMensajes.innerHTML = this.responseText;
+            mostrarVentanaEmergente();
         }
     };
     xhttp.open('GET', 'ver_mensaje.php', true);

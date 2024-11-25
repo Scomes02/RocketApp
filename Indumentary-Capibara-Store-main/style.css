@@ -47,17 +47,17 @@ nav a:hover {
 }
 
 h7 {
-    display: block; /* Asegura que el texto se comporte como un bloque */
-    text-align: center; /* Centra el texto horizontalmente */
-    margin: 20px auto; /* Espaciado arriba y abajo */
-    font-size: 1.5rem; /* Tamaño del texto */
-    color: #333; /* Color del texto */
-    line-height: 1.6; /* Espaciado entre líneas */
-    font-weight: 500; /* Peso del texto */
-    max-width: 800px; /* Ancho máximo del texto para buena legibilidad */
-    background: linear-gradient(90deg, #bc9e3b, #B78F0D); /* Fondo degradado */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 8px; /* Bordes redondeados */
+    display: block; 
+    text-align: center; 
+    margin: 20px auto;
+    font-size: 1.5rem;
+    color: #333; 
+    line-height: 1.6;
+    font-weight: 500; 
+    max-width: 800px; 
+    background: linear-gradient(90deg, #bc9e3b, #B78F0D); 
+    padding: 10px;
+    border-radius: 8px;
 }
 
 
@@ -72,26 +72,26 @@ h7 {
 }
 
 .contacto-form label {
-    font-weight: bold; /* Negrita para las etiquetas */
+    font-weight: bold; 
 }
 
 .contacto-form input[type="text"],
 .contacto-form textarea {
-    width: 100%; /* Ancho completo */
-    padding: 10px; /* Espaciado interno */
-    margin-bottom: 10px; /* Espaciado entre campos */
-    border: 1px solid #ccc; /* Bordes simples */
-    border-radius: 4px; /* Bordes redondeados */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .contacto-form input[type="submit"] {
-    background-color: #B78F0D; /* Color de fondo para el botón */
-    color: white; /* Color de texto */
-    border: none; /* Sin bordes */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 4px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    font-weight: bold; /* Texto en negrita */
+    background-color: #B78F0D;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
     transition: background-color 0.3s ease; /* Transición suave para el hover */
 }
 
@@ -119,10 +119,10 @@ footer ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Organiza los elementos en fila */
+    display: flex;
     gap: 20px; /* Espacio entre elementos */
-    justify-content: center; /* Centra el contenido dentro del footer */
-    align-items: center; /* Alinea verticalmente */
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -137,13 +137,13 @@ footer a:hover {
 }
 
 footer li {
-    display: flex; /* Asegura que el contenido dentro del <li> esté alineado */
+    display: flex;
     align-items: center;
 }
 
 footer a img {
-    width: 20px; /* Ajusta el tamaño del icono TikTok si es necesario */
-    margin-right: 5px; /* Espacio entre el icono y el texto */
+    width: 20px; 
+    margin-right: 5px;
 }
 
 #conteCarrusel {
@@ -152,11 +152,21 @@ footer a img {
     width: 90%;
     margin: 0 auto;
     overflow: hidden;
+    position: relative;
 }
 
 .tarjeta {
     height: 100%;
-    position: relative;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.tarjeta.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .imgCarrusel {
@@ -179,8 +189,45 @@ img {
     padding: 20px;
 }
 
+@keyframes carrusel {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    5% {
+        opacity: 1;
+        visibility: visible;
+    }
+    33.33% {
+        opacity: 1;
+        visibility: visible;
+    }
+    38.33% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.tarjeta:nth-child(1) {
+    animation: carrusel 6s infinite;
+}
+
+.tarjeta:nth-child(2) {
+    animation: carrusel 6s infinite;
+    animation-delay: 2s;
+}
+
+.tarjeta:nth-child(3) {
+    animation: carrusel 6s infinite;
+    animation-delay: 4s;
+}
+
 i {
-    color: #fcfcfc;
+    color: #B78F0D;
     cursor: pointer;
 }
 

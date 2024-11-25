@@ -57,7 +57,7 @@ session_start();
     <hr>
 
     <div id="conteCarrusel">
-        <div class="tarjeta" id="tarjeta-1">
+        <div class="tarjeta active" id="tarjeta-1">
             <div class="imgCarrusel">
                 <img src="fotos index/img1.jpg">
             </div>
@@ -125,7 +125,7 @@ session_start();
                 </li>
                 <li>
                     <a href="https://www.tiktok.com/foryou?lang=es" target="_blank">
-                        <img src="fotos index/tiktok.png"><i>TikTok</i>
+                        <img src="fotos index/tiktok.png"></i>TikTok
                     </a>
                 </li>
                 <li>
@@ -144,6 +144,20 @@ session_start();
         </div>
     </div>
     <script src="script.js"></script>
-</body>
+        <!-- Movimiento automatico de las imagenes del carrusel -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tarjetas = document.querySelectorAll('.tarjeta');
+            let currentIndex = 0;
 
+            function showNextSlide() {
+                tarjetas[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % tarjetas.length;
+                tarjetas[currentIndex].classList.add('active');
+            }
+
+            setInterval(showNextSlide, 2000);
+        });
+    </script>
+</body>
 </html>
