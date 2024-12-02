@@ -213,17 +213,17 @@ img {
 }
 
 .tarjeta:nth-child(1) {
-    animation: carrusel 6s infinite;
+    animation: carrusel 30s infinite;
 }
 
 .tarjeta:nth-child(2) {
-    animation: carrusel 6s infinite;
-    animation-delay: 2s;
+    animation: carrusel 30s infinite;
+    animation-delay: 10s;
 }
 
 .tarjeta:nth-child(3) {
-    animation: carrusel 6s infinite;
-    animation-delay: 4s;
+    animation: carrusel 30s infinite;
+    animation-delay: 20s;
 }
 
 i {
@@ -256,16 +256,16 @@ i {
 }
 
 .contenedor1 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 2%; 
+    margin-bottom: 2%; 
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
 .fotoPrincipal {
-    height: 423px;
-    width: 250px;
+    height: 50vh; 
+    width: 20vw; 
     display: inline-block;
     animation: pulse 5s infinite;
     animation-play-state: paused;

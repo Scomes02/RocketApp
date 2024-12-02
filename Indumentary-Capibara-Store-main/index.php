@@ -156,7 +156,7 @@ session_start();
                 tarjetas[currentIndex].classList.add('active');
             }
 
-            setInterval(showNextSlide, 2000);
+            setInterval(showNextSlide, 10000);
         });
     </script>
 </body>
